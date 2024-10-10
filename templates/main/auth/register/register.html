@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!doctype html>
 <html lang="en">
 
@@ -31,8 +32,8 @@
 <div class="parent-div">
     <div class="main-div">
         <div class="main-logo">
-            <a href="../../../index.html" style="color: #000000">
-                <img src="../../../files/images/logo.png" alt="404" class="logo-style">
+            <a href="/  " style="color: #000000">
+                <img src="{% static 'files/images/logo.png' %}" alt="404" class="logo-style">
                 Najot Ta'lim Feedback
             </a>
         </div>
@@ -46,7 +47,7 @@
             </div>
             <div class="register-form">
                 <div class="col-lg-12 col-12 mx-auto">
-                    <form class="custom-form" action="" method="post" role="form">
+                    <form class="custom-form" action="{% url 'users:register' %}" method="post" role="form">
                         {% csrf_token %}
                         <div class="text-center mb-5">
                             <p class="mb-1" style="text-align: end">Welcome to <h6 style="text-align: end"><b>Najot

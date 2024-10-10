@@ -95,7 +95,7 @@ def user_register_page_view(request):
 
 def product_checkout_page_view(request):
     logout(request('/'))
-    return render(request, 'registration/product-checkout.html')
+    return render(request, 'index.html')
 
 
 # def user_wishlist_page_view(request):

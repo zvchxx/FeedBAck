@@ -31,8 +31,8 @@
 <div class="parent-div">
     <div class="main-div">
         <div class="main-logo">
-            <a href="../../../index.html" style="color: #000000">
-                <img src="../../../files/images/logo.png" alt="404" class="logo-style">
+            <a href="/" style="color: #000000">
+                <img src="{% static 'files/images/logo.png' %}" alt="404" class="logo-style">
                 Najot Ta'lim Feedback
             </a>
         </div>
@@ -76,7 +76,7 @@
                             </div>
                             <div style="padding-top: 10px; text-align: center;">
                                 <p style="font-size: 13px">Does your account not exist? <a
-                                        href="/users/register/">Create account</a>
+                                        href="{% url 'users:register' %}">Create account</a>
                                 </p>
                             </div>
                         </div>

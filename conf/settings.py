@@ -31,18 +31,26 @@ INSTALLED_APPS = [
     #local app
     'homepage',
     'users',
+    'team',
+    'feedback',
+    'comment',
 ]
+
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Qo'shilgan qator
 ]
+
 
 ROOT_URLCONF = 'conf.urls'
 
@@ -107,10 +115,13 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', 'English'),
     ('uz', 'O\'zbekcha'),
-    ('ru', 'Russian'),
+    ('ru', 'Русский'),
 ]
 
-LOCALE_PATHS = BASE_DIR / 'locale', 
+LOCALE_PATHS = [
+    BASE_DIR / 'locale', 
+]
+
 
 TIME_ZONE = 'UTC'
 
