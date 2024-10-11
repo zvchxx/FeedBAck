@@ -1,6 +1,6 @@
-{% load static %}
 {% load i18n %}
 <!doctype html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -22,7 +22,7 @@
 
     <link href="{% static 'css/bootstrap/templatemo-ebook-landing.css' %}" rel="stylesheet">
 
-    <link rel="icon" href="{% static 'files/images/favicon.ico' }" type="image/x-icon">
+    <link rel="icon" href="{% static 'files/images/favicon.ico' %}" type="image/x-icon">
 </head>
 
 <body>
@@ -32,9 +32,9 @@
 <div class="parent-div">
     <div class="main-div">
         <div class="main-logo">
-            <a href="/  " style="color: #000000">
+            <a href="/" style="color: #000000">
                 <img src="{% static 'files/images/logo.png' %}" alt="404" class="logo-style">
-                Najot Ta'lim Feedback
+                {% trans "Najot Ta'lim Feedback" %}
             </a>
         </div>
         <div class="form-items">
@@ -45,31 +45,30 @@
                                   autoplay></dotlottie-player>
 
             </div>
-            <div class="register-form">
+            <div class="register-form" style="height: 50px;">
                 <div class="col-lg-12 col-12 mx-auto">
                     <form class="custom-form" action="{% url 'users:register' %}" method="post" role="form">
                         {% csrf_token %}
                         <div class="text-center mb-5">
-                            <p class="mb-1" style="text-align: end">Welcome to <h6 style="text-align: end"><b>Najot
-                            Ta'lim Feedback</b></h6></p>
+                            <p class="mb-1" style="text-align: end">{% trans 'Welcome to' %} <h6 style="text-align: end"><b>{% trans "Najot Ta'lim" %}</b></h6></p>
                         </div>
                         <div>
-                            <p style="text-align: start"><b>Register</b></p>
+                            <p style="text-align: start"><b>{% trans 'Register' %}</b></p>
                             <div class="input-group mb-3">
                                 <input type="text" name="first_name" id="full_name"
                                        class="form-control register-form-input"
                                        aria-label="full_name" aria-describedby="basic-addon1"
-                                       placeholder="First name" required>
+                                       placeholder="{% trans 'First name' %}" required>
 
                                 <span class="input-group-text" id="basic-addon1">
                                             <i class="custom-form-icon bi-person"></i>
                                         </span>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" name="last_name" id="full_name"
+                                <input type="text" name="username" id="full_name"
                                        class="form-control register-form-input"
-                                       aria-label="full_name" aria-describedby="basic-addon1"
-                                       placeholder="Last name" required>
+                                       aria-label="username" aria-describedby="basic-addon1"
+                                       placeholder="{% trans 'Username' %}" required>
 
                                 <span class="input-group-text" id="basic-addon1">
                                             <i class="custom-form-icon bi-person"></i>
@@ -79,7 +78,7 @@
                                 <input type="email" name="email" id="email"
                                        class="form-control register-form-input"
                                        aria-label="user_email" aria-describedby="basic-addon1"
-                                       placeholder="Email" required>
+                                       placeholder="{% trans 'Email' %}" required>
 
                                 <span class="input-group-text" id="basic-addon2">
                                             <i class="custom-form-icon bi-person"></i>
@@ -89,7 +88,7 @@
                                 <input type="password" name="password1" id="password"
                                        class="form-control register-form-input"
                                        aria-label="user_password" aria-describedby="basic-addon1"
-                                       placeholder="Password" required>
+                                       placeholder="{% trans 'Password' %}" required>
 
                                 <span class="input-group-text" id="basic-addon">
                                             <i class="custom-form-icon bi-person"></i>
@@ -99,18 +98,19 @@
                                 <input type="password" name="password2" id="confirm_password"
                                        class="form-control register-form-input"
                                        aria-label="confirm_password" aria-describedby="basic-addon1"
-                                       placeholder="Confirm Password" required>
+                                       placeholder="{% trans 'Confirm Password' %}" required>
 
                                 <span class="input-group-text" id="basic-addon3">
                                             <i class="custom-form-icon bi-person"></i>
                                         </span>
                             </div>
                             <div class="col-lg-8 col-md-10 col-8 mx-auto mb-2">
-                                <button type="submit" class="form-control" style="text-align: center">Register</button>
+                                <button type="submit" class="form-control"
+                                        style="text-align: center">{% trans 'Register' %}</button>
                             </div>
                             <div style="padding-top: 10px; text-align: center">
-                                <p style="font-size: 13px">Do you have an account? <a href="/users/login/">Log
-                                    in</a>
+                                <p style="font-size: 13px">{% trans 'Do you have an account?' %} <a
+                                        href="/users/login/">{% trans 'Log in' %}</a>
                                 </p>
                             </div>
                         </div>

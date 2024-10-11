@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -28,13 +29,13 @@
     <div class="container">
         <a class="navbar-brand" href="/">
             <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
-            <span>Najot Ta'lim</span>
+            <span>{% trans "Najot Ta'lim" %}</span>
         </a>
 
         <div class="d-lg-none ms-auto me-3">
             <a href="/users/login/" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                 <i class="btn-icon bi-person"></i>
-                <span>Log in</span>
+                <span>{% trans 'Log in' %}</span>
             </a>
         </div>
 
@@ -46,23 +47,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-lg-auto me-lg-4">
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="/feedback/write/">Write an offer</a>
+                    <a class="nav-link click-scroll" href="/feedback/offer/">{% trans 'Write an offer' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="/">Landing page</a>
+                    <a class="nav-link click-scroll" href="/">{% trans 'Landing page' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="/comment/comment/">Comments</a>
+                    <a class="nav-link click-scroll" href="/comment/comment/">{% trans 'Comments' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="/404/">404</a>
+                    <a class="nav-link click-scroll" href="/404/">{% trans '404' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="/profile/">Profile</a>
+                    <a class="nav-link click-scroll" href="/profile/">{% trans 'Profile' %}</a>
                 </li>
 
                 <li class="nav-item">
@@ -89,10 +90,10 @@
         <div id="button-container">
             <div class="select-category mr-5">
                 <select class="form-select" id='data-selector' aria-label="Select category">
-                    <option value="offers">Show Offers</option>
-                    <option value="demands">Show Problems</option>
-                    <option value="my-offers">Show My Offers</option>
-                    <option value="my-written-offers">Show My Problems</option>
+                    <option value="offers">{% trans 'Show Offers' %}</option>
+                    <option value="demands">{% trans 'Show Problems' }</option>
+                    <option value="my-offers">{% trans 'Show My Offers' }</option>
+                    <option value="my-written-offers">{% trans 'Show My Problem' %}s</option>
                 </select>
             </div>
             <div class="input-group ml-5">
@@ -107,7 +108,7 @@
             </div>
         </div>
         <div id="card-container" class="row">
-            <h2 style="margin: 15px 5px">Offers</h2>
+            <h2 style="margin: 15px 5px">{% trans 'Offers' %}</h2>
     
             <!--
                 Har bitta divni ichida o'zini classi bor. Ya'ni offer cardlari uchun offer degan,
@@ -156,23 +157,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <span>Copyright © 2024, All Right Reserved Najot Ta'lim Feedback</span>
+                    <span>{% trans "Copyright © 2024, All Right Reserved Najot Ta'lim Feedback" %}</span>
                 </div>
                 <!-- End Col -->
                 <div class="col-md-6">
                     <div class="copyright-menu">
                         <ul>
                             <li>
-                                <a href="#">Home</a>
+                                <a href="#">{% trans 'Home' %}</a>
                             </li>
                             <li>
-                                <a href="#">Terms</a>
+                                <a href="#">{% trans 'Teams' %}</a>
                             </li>
                             <li>
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">{% trans 'Privacy Policy' %}</a>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="#">{% trans 'Contact' %}</a>
                             </li>
                         </ul>
                     </div>

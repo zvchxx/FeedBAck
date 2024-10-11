@@ -175,4 +175,18 @@ path {
   padding-left: 20px;
 }
 
+.btn-group .btn,
+.btn-group a {
+    color: #333; /* Tugma matni rangi */
+    text-decoration: none; /* Chiziqni olib tashlash */
+    padding: 10px 15px; /* Tugmalarni o'lchamlarini belgilash */
+    border: 1px solid transparent; /* Ramka qo'shish */
+    border-radius: 5px; /* Burchaklarni yumshatish */
+}
+
+.btn-group .btn.active,
+.btn-group a.active {
+    background-color: #007bff; /* Tanlangan tugma rangi */
+    color: white; /* Matn rangi */
+}
 /*# sourceMappingURL=style.css.map */

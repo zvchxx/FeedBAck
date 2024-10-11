@@ -64,10 +64,10 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/feedback/write/">{% trans 'Problem & Offer' %}</a>
+                        <a class="nav-link navbar-nav-scroll" href="/feedback/offer/">{% trans 'Write Offer' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/feedback/show/">{% trans 'Show Offers & Problems' %}</a>
+                        <a class="nav-link" href="{% url 'feedback:show' %}">{% trans 'Show Offers' %}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/comment/comment/">{% trans 'Comments' %}</a>
@@ -95,11 +95,19 @@
                 </ul>
 
                 <div class="d-none d-lg-block">
-                    <a href="/users/login/"
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'users:logout' %}"
+                           class="btn custom-btn custom-border-btn btn-naira btn-inverted">
+                            <i class="btn-icon bi-person"></i>
+                            <span>{% trans 'Log out' %}</span>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'users:login' %}"
                        class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                         <i class="btn-icon bi-person"></i>
-                        <span>{% trans 'Log in' %}</span>
+                            <span>{% trans 'Log in' %}</span>
                     </a>
+                    {% endif %}
                 </div>
             </div>
         </nav>
@@ -114,9 +122,9 @@
 
                         <h1 class="text-white mb-4">{% trans 'Online platform for requests and offers' %}</h1>
 
-                        <a href="main/forms/offer/offer-form.html" class="btn custom-btn smoothscroll me-3">{% trans 'Problems' %}</a>
+                        <a href="/feedback/offer/" class="btn custom-btn smoothscroll me-3">{% trans 'Problems' %}</a>
 
-                        <a href="main/auth/login/login.html" class="link link--kale smoothscroll">{% trans 'Make an offer' %}</a>
+                        <a href="/users/login/" class="link link--kale smoothscroll">{% trans 'Make an offer' %}</a>
                     </div>
                     <div class="hero-image-wrap col-lg-6 col-12 mt-3 mt-lg-0">
                         <dotlottie-player src="https://lottie.host/ef67cee9-3f8a-4da2-945f-ab8a83e541b0/QZXEjRpNmf.json"
@@ -280,58 +288,24 @@
                     <div class="slide">
                         <div class="container">
                             <div class="row">
-
+                                {% for team in teams %}
                                 <div class="col-lg-6 col-12">
-                                    <img src="https://media.licdn.com/dms/image/v2/D5603AQFfF31QIzdkqg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1700902215104?e=1731542400&v=beta&t=bi8U1JJPAbKYaQ_r5JGt0O-FOdmu-1sVJwSpNUolorc"
+                                    <img src="{{ team.avatar.url }}"
                                         class="author-image img-fluid" alt="404">
                                 </div>
-
                                 <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                                    <h6>The founder of the project</h6>
+                                    <h6>{{ team.name }}</h6>
 
-                                    <h2 class="mb-4">Sanjarbek Tursunov</h2>
+                                    <h2 class="mb-4">{{ team.full_name }}</h2>
 
                                     <p>
-                                        Sanjarbek Tursunov is the founder of Najot Ta'lim Feedback. He has extensive
-                                        experience
-                                        in
-                                        enhancing educational center services and developing feedback systems. Sanjarbek
-                                        Tursunov is
-                                        dedicated to meeting students' needs and improving service quality by
-                                        implementing
-                                        feedback and
-                                        discussion platforms.
+                                     {{ team.inf }}
                                     </p>
                                 </div>
-
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="slide">
-                        <div class="container">
-                            <div class="row">
-
-                                <div class="col-lg-6 col-12">
-                                    <img src="{% static 'files/images/participants_images/alamov_asadbek.jpg' %}"
-                                        class="author-image img-fluid" alt="404">
-                                </div>
-
-                                <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                                    <h6>Frontend Developer for the project</h6>
-
-                                    <h2 class="mb-4">A'lamov Asadbek</h2>
-
-                                    <p>
-                                        Hello! I’m Asadbek, a 20-year-old Frontend and Python developer. With 1 year of
-                                        experience in Frontend development, I’m passionate about creating innovative
-                                        solutions and delivering high-quality user experiences. I also work with Python
-                                        to
-                                        build efficient and scalable applications.
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
             </div>
             <br>
 
@@ -353,6 +327,7 @@
 
                         <h2>{% trans 'Best offers' %}</h2>
                     </div>
+                    
                     <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner" style="padding: 0 20px">
                             <div class="carousel-item active">
@@ -360,16 +335,15 @@
                                     <div class="col-lg-4 col-12 p-3">
                                         <div class="custom-block d-flex flex-wrap">
                                             <div class="custom-block-image-wrap d-flex flex-column">
-                                                <img src="https://cdnn21.img.ria.ru/images/07e8/08/1b/1968767608_0:0:1081:608_1920x0_80_0_0_d1c3f9aa9afb65cda7d1c318f4e7dfa6.jpg"
+                                                <img src="{% }"
                                                     class="img-fluid avatar-image" alt="">
-
                                                 <div class="text-center mt-3">
                                                     <span class="text-white">Pavel Durov</span>
 
                                                     <strong class="d-block text-white">Student</strong>
                                                 </div>
                                             </div>
-
+                                            {% for offer in viewed_offer %}
                                             <div class="custom-block-info">
                                                 <p class="mb-0">
                                                     Yaqinda o‘tgan imtihonlarda savollar juda qiyin bo‘ldi.
@@ -386,6 +360,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% endfor %}
                             <button class="carousel-control-prev carousel-btn" type="button"
                                 data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                                 <span class="bi bi-caret-left-fill "></span>
@@ -407,23 +382,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <span>Copyright © 2024, All Right Reserved Najot Ta'lim Feedback</span>
+                        <span>{% trans "Copyright © 2024, All Right Reserved Najot Ta'lim Feedback" %}</span>
                     </div>
                     <!-- End Col -->
                     <div class="col-md-6">
                         <div class="copyright-menu">
                             <ul>
                                 <li>
-                                    <a href="#">Home</a>
+                                    <a href="#">{% trans 'Home' %}</a>
                                 </li>
                                 <li>
-                                    <a href="#">Terms</a>
+                                    <a href="#">{% trans 'Terms' %}</a>
                                 </li>
                                 <li>
-                                    <a href="#">Privacy Policy</a>
+                                    <a href="#">{% trans 'Privacy Policy' %}</a>
                                 </li>
                                 <li>
-                                    <a href="#">Contact</a>
+                                    <a href="#">{% trans 'Contact' }</a>
                                 </li>
                             </ul>
                         </div>

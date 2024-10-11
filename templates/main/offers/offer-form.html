@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,40 +35,64 @@
             <dotlottie-player src="https://lottie.host/5ac2c618-54f5-4971-abf3-32457e6013a0/3UMOgBkfLK.json"
                               background="transparent" speed="1" loop class="animation-offer"
                               autoplay></dotlottie-player>
-        </div>
-        <div class="col-md-6">
-            <div class="btn-group mb-3" role="group">
-                <button type="button" class="btn btn-secondary" id="signInBtn">Offers</button>
-                <button type="button" class="btn btn-secondary active" id="signUpBtn">Problems</button>
             </div>
-            <a href="/" type="button" class="btn btn-secondary back-home">Home</a>
-            <form id="signUpForm">
-                <h4 class="form-title">Submit a problem</h4>
-                <div class="form-group mt-4">
-                    <label for="problemTitle">Title</label>
-                    <input type="text" class="form-control" id="problemTitle" placeholder="Enter problem title">
+               
+            <div class="col-md-6">
+                <div class="btn-group mb-3" role="group">
+                    <button type="button" class="btn btn-secondary" id="offerBtn">Offer</button>
+                    <button type="button" class="btn btn-secondary active" id="problemBtn">Problem</button>
                 </div>
-                <div class="form-group">
-                    <label for="problemDescription">Description</label>
-                    <textarea class="form-control" id="problemDescription"
-                              placeholder="Enter problem description" maxlength="2000"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <form id="signInForm" style="display: none;">
-                <h4 class="form-title">Submit a offer</h4>
-                <div class="form-group mt-4">
-                    <label for="offerTitle">Title</label>
-                    <input type="text" class="form-control" id="offerTitle" placeholder="Enter offer title">
-                </div>
-                <div class="form-group">
-                    <label for="offerDescription">Description</label>
-                    <textarea class="form-control" id="offerDescription"
-                              placeholder="Enter offer description" maxlength="2000"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+                <a href="/" class="btn btn-secondary back-home">{% trans 'Home' %}</a>
+                <form id="submissionForm" method="POST">
+                    {% csrf_token %}
+                    <h4 class="form-title" id="formTitle">{% trans 'Submit a problem' %}</h4>
+                    <div class="form-group mt-4">
+                        <label for="submissionTitle">{% trans 'Title' %}</label>
+                        <input name="title" type="text" class="form-control" id="submissionTitle" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="submissionDescription">Description</label>
+                        <textarea class="form-control" name="description" id="submissionDescription" placeholder="Enter problem description" maxlength="2000"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+                </form>
+            </div>
+            
+            <script>
+                const offerBtn = document.getElementById('offerBtn');
+                const problemBtn = document.getElementById('problemBtn');
+                const formTitle = document.getElementById('formTitle');
+                const submissionForm = document.getElementById('submissionForm');
+            
+                function updateButtons(selected) {
+                    if (selected === 'offer') {
+                        offerBtn.classList.add('active');
+                        problemBtn.classList.remove('active');
+                        formTitle.textContent = 'Submit a offer';
+                        submissionForm.action = "{% url 'feedback:problem' %}";  
+                        submissionForm.querySelector('textarea[name="description"]').placeholder = "Enter offer description";
+                    } else {
+                        problemBtn.classList.add('active');
+                        offerBtn.classList.remove('active');
+                        formTitle.textContent = 'Submit a problem';
+                        submissionForm.action = "{  % url 'feedback:problem' %}";  
+                        submissionForm.querySelector('textarea[name="description"]').placeholder = "Enter problem description";
+                    }
+                }
+            
+                offerBtn.addEventListener('click', () => updateButtons('offer'));
+                problemBtn.addEventListener('click', () => updateButtons('problem'));
+            </script>
+            
+            <style>
+                .btn-group .btn.active {
+                    background-color: #007bff; /* Tanlangan tugma rangi */
+                    color: white; /* Matn rangi */
+                }
+                .btn-group .btn {
+                    color: #333; /* Tugma matni rangi */
+                }
+            </style>            
     </div>
 </div>
 

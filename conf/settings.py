@@ -14,7 +14,8 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", cast=bool, default=False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '138.197.185.118']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', '138.197.185.118']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #local app
+    'django_extensions',
     'homepage',
     'users',
     'team',
@@ -48,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware',  # Qo'shilgan qator
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 
@@ -122,7 +124,7 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale', 
 ]
 
-
+USE_I18N = False
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -140,7 +142,7 @@ STATICFILES_DIRS = [BASE_DIR / 'assets/']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
-
+LOGIN_REDIRECT_URL = 'home'
 
 # Email settings
 
