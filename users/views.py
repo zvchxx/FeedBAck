@@ -56,7 +56,7 @@ def register_view(request):
             user.is_active = False
             user.save()
             send_email_verification(request, user)
-            return redirect(reverse_lazy('login'))
+            return redirect(reverse_lazy('users:login'))
         else:
             errors = form.errors.as_json()      
             return render(request, 'main/auth/register/register.html', {"errors": errors})

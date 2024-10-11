@@ -102,7 +102,7 @@
                             <span>{% trans 'Log out' %}</span>
                         </a>
                     {% else %}
-                        <a href="{% url 'users:login' %}"
+                        <a href="/"
                        class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                         <i class="btn-icon bi-person"></i>
                             <span>{% trans 'Log in' %}</span>
@@ -284,12 +284,14 @@
                 <h2 class="mb-5">{% trans 'About the participants in the team' %}</h2>
             </div>
             <div class="slider">
+               
                 <div class="slides-track">
+                    {% for team in teams %}
                     <div class="slide">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 col-12">
-                                    {% for team in teams %}
+                                   
                                     <img src="{{ team.avatar.url }}"
                                         class="author-image img-fluid" alt="404">
                                 </div>
@@ -300,10 +302,12 @@
                                      {{ team.inf }}
                                     </p>
                                 </div>
-                                {% endfor %}
+                               
                             </div>
                         </div>
+                       
                     </div>
+                    {% endfor %}
             </div>
             <br>
 
@@ -328,12 +332,13 @@
                     
                     <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner" style="padding: 0 20px">
+                           
                             <div class="carousel-item active">
+                                {% for offer in viewed_offer %}
                                 <div class="card-wrapper container-sm d-flex  justify-content-around">
                                     <div class="col-lg-4 col-12 p-3">
                                         <div class="custom-block d-flex flex-wrap">
                                             <div class="custom-block-image-wrap d-flex flex-column">
-                                                {% for offer in viewed_offer %}
                                                 <!-- <img src=""
                                                     class="img-fluid avatar-image" alt=""> -->
                                                 <div class="text-center mt-3">
@@ -345,7 +350,7 @@
                                               {{ offer.description }}
                                                 </p>
                                             </div>
-                                            {% endfor %}
+                                            
                                         </div>
                                     </div>
                             <button class="carousel-control-prev carousel-btn" type="button"
@@ -358,8 +363,11 @@
                                 <span style="color: #f4a261; font-size: 25px" class="bi bi-caret-right-fill"></span>
                             </button>
                         </div>
+                            {% endfor %}
                     </div>
+                   
                 </div>
+               
             </div>
         </section>
         <!--    Footer   -->

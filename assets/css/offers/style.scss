@@ -136,6 +136,12 @@ path {
   margin-top: 25px;
 }
 
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 #button-container .input-group form {
   display: flex;
   justify-content: flex-end;

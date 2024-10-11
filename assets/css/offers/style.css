@@ -187,6 +187,13 @@ path {
 .row {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .btn-group .btn.active,
