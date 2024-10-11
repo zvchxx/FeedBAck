@@ -90,10 +90,8 @@
         <div id="button-container">
             <div class="select-category mr-5">
                 <select class="form-select" id='data-selector' aria-label="Select category">
-                    <option value="offers">{% trans 'Show Offers' %}</option>
-                    <option value="demands">{% trans 'Show Problems' }</option>
-                    <option value="my-offers">{% trans 'Show My Offers' }</option>
-                    <option value="my-written-offers">{% trans 'Show My Problem' %}s</option>
+                    <option value="offers">{% trans 'Show Offers & Problems' %}</option>
+                    <option value="my-offers">{% trans "Show My Offers & Problems" %}</option>
                 </select>
             </div>
             <div class="input-group ml-5">
@@ -108,6 +106,7 @@
             </div>
         </div>
         <div id="card-container" class="row">
+            {% for offer in offers %}
             <h2 style="margin: 15px 5px">{% trans 'Offers' %}</h2>
     
             <!--
@@ -123,8 +122,10 @@
                     <div class="img-avatar">
                         <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
                     </div>
+                    
                     <div class="card-text">
                         <div class="title-total">
+                            
                             <div class="title">{{ offer.title }}</div>
                             <a href='#'>{{ offer.user }}</a>
                             <div class="desc">
@@ -136,13 +137,59 @@
                                 </i>
                                 <!-- <i class="bi bi-chat">5</i> -->
                             </div>
+                            
                         </div>
     
                     </div>
+                    
     
     
                 </div>
             </div>
+            {% endfor %}
+        </div>
+        <div id="card-container" class="row">
+            {% for problem in problems %}
+            <h2 style="margin: 15px 5px">{% trans 'Prolem' %}</h2>
+    
+            <!--
+                Har bitta divni ichida o'zini classi bor. Ya'ni offer cardlari uchun offer degan,
+                demand cardlari uchun demand degan class lari bor ular majburiy agar ushalar qolib ketsa ekranga buttonni
+                bosganda malumotlarni chiqarib bermaydi. Bu classlarni nomi aynan qaysi categoriyaga
+                tegishli ekanligini aniqlab beradi
+            -->
+    
+            <!--   Offers      -->
+            <div class="col-md-4 offer mb-4" style="margin-top: 25px">
+                <div class="card">
+                    <div class="img-avatar">
+                        <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
+                    </div>
+                    
+                    <div class="card-text">
+                        <div class="title-total">
+                            
+                            <div class="title">{{ problem.title }}</div>
+                            <a href='#'>{{ problem.user }}</a>
+                            <div class="desc">
+                                {{ problem.description }}
+                            </div>
+                            <div class="actions" style="margin-left: 120px;">
+                                <i class="bi bi-eye">
+                                    {{ problem.views_count }}
+                                </i>
+                                <!-- <i class="bi bi-chat">5</i> -->
+                            </div>
+                            
+                        </div>
+    
+                    </div>
+                    
+    
+    
+                </div>
+            </div>
+            {% endfor %}
         </div>
         <!-- <div id="pagination" class="text-center mb-4" style="margin-top: 50px;">
             <button id="prev" class="btn" disabled>Previous</button>

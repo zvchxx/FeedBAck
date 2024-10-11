@@ -8,18 +8,26 @@ from django.db.models import F
 
 from feedback.form import OfferForm, ProblemForm
 
-# def show_offer_problem_page_view(request):
-#     return render(request, 'main/offers/offer.html')
-
 
 def show_offers_views_page(request):
     offers = OfferModel.objects.all()
-    total_views = sum(offer.views_count for offer in offers) 
+    total_views = sum(offer.views_count for offer in offers)
     context = {
         'offers': offers,
-        'total_views': total_views, 
+        'total_views': total_views
     }
     return render(request, 'main/offers/offer.html', context=context)
+
+def show_problems_views_page(request):
+    problems = OfferModel.objects.all()
+    total_views = sum(offer.views_count for offer in problems)
+    context = {
+        'problems': problems,
+        'p_total_views': total_views
+    }
+    return render(request, 'main/offers/offer.html', context=context)
+
+
 
 def offer_page_view(request):
     if request.method == 'POST':
@@ -45,5 +53,4 @@ def problem_page_view(request):
     else:
         form = ProblemForm()  # To'g'ri forma olish
     return render(request, 'main/offers/offer-form.html', {'form': form})
-
 

@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from  decouple import config
 
@@ -59,6 +60,7 @@ ROOT_URLCONF = 'conf.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'main/auth/')],
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -116,7 +118,7 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
     ('en', 'English'),
-    ('uz', 'O\'zbekcha'),
+    ('uz', 'Ozbekcha'),
     ('ru', 'Русский'),
 ]
 
@@ -148,13 +150,12 @@ LOGIN_REDIRECT_URL = 'home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASS = config('EMAIL_HOST_PASS')
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 try:
     from .local_settings import *

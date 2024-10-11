@@ -33,7 +33,7 @@ def send_email_verification(request, user):
     full_url = f"http://{current_site.domain}/{verification_url}"
 
     text_content = render_to_string(
-        'main/auth/register/verify_email.html',
+        'main/auth/verify_email.html',
         {'user': user, 'full_url': full_url}
     )
 
@@ -55,7 +55,6 @@ def register_view(request):
             user.set_password(form.cleaned_data['password1'])  
             user.is_active = False
             user.save()
-            # Send email activation
             send_email_verification(request, user)
             return redirect(reverse_lazy('login'))
         else:
@@ -77,7 +76,6 @@ def login_view(request):
                 login(request, user)
                 return redirect("/")
             else:
-                # message should be here
                 return render(request, 'main/auth/login/login.html')
         else:
             return render(request, 'main/auth/login/login.html')

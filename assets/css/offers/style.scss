@@ -31,6 +31,12 @@ $main-yell-rgb-016: #e86e0c !default;
   font-size: 18px;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .card .title {
   padding: 1rem;
   text-align: right;

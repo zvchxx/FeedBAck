@@ -39,14 +39,14 @@
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
-                    <span>{% trans "Najot Ta'lim" %}</span>
+                    <span>{% trans 'Najot Talim' %}</span>
                 </a>
 
                 <div class="d-lg-none ms-auto me-3">
                     <a href="main/auth/login/login.html"
                         class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                         <i class="btn-icon bi-person"></i>
-                        <span>Log in</span>
+                        <span>{% trans 'Log in' %}</span>
                     </a>
                 </div>
 
@@ -288,22 +288,20 @@
                     <div class="slide">
                         <div class="container">
                             <div class="row">
-                                {% for team in teams %}
                                 <div class="col-lg-6 col-12">
+                                    {% for team in teams %}
                                     <img src="{{ team.avatar.url }}"
                                         class="author-image img-fluid" alt="404">
                                 </div>
                                 <div class="col-lg-6 col-12 mt-5 mt-lg-0">
                                     <h6>{{ team.name }}</h6>
-
                                     <h2 class="mb-4">{{ team.full_name }}</h2>
-
                                     <p>
                                      {{ team.inf }}
                                     </p>
                                 </div>
+                                {% endfor %}
                             </div>
-                            {% endfor %}
                         </div>
                     </div>
             </div>
@@ -335,32 +333,21 @@
                                     <div class="col-lg-4 col-12 p-3">
                                         <div class="custom-block d-flex flex-wrap">
                                             <div class="custom-block-image-wrap d-flex flex-column">
-                                                <img src="{% }"
-                                                    class="img-fluid avatar-image" alt="">
+                                                {% for offer in viewed_offer %}
+                                                <!-- <img src=""
+                                                    class="img-fluid avatar-image" alt=""> -->
                                                 <div class="text-center mt-3">
-                                                    <span class="text-white">Pavel Durov</span>
-
-                                                    <strong class="d-block text-white">Student</strong>
+                                                    <span class="text-white">{{ offer.user__ful_name }}</span>
                                                 </div>
                                             </div>
-                                            {% for offer in viewed_offer %}
                                             <div class="custom-block-info">
                                                 <p class="mb-0">
-                                                    Yaqinda o‘tgan imtihonlarda savollar juda qiyin bo‘ldi.
-                                                    Ko‘plab savollar
-                                                    darslarda o‘rgangan materiallardan ancha farq qilardi va ular bilan
-                                                    qanday ishlashni
-                                                    bilmasdim. Savollar murakkab va darsda berilgan tushunchalardan
-                                                    chetga
-                                                    chiqib ketgan
-                                                    edi. Savollarni yanada aniqroq va darsda o‘rgangan materiallarga mos
-                                                    bo‘lishini
-                                                    xohlayman
+                                              {{ offer.description }}
                                                 </p>
                                             </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
-                                    {% endfor %}
                             <button class="carousel-control-prev carousel-btn" type="button"
                                 data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                                 <span class="bi bi-caret-left-fill "></span>
@@ -398,7 +385,7 @@
                                     <a href="#">{% trans 'Privacy Policy' %}</a>
                                 </li>
                                 <li>
-                                    <a href="#">{% trans 'Contact' }</a>
+                                    <a href="#">{% trans 'Contact' %}</a>
                                 </li>
                             </ul>
                         </div>

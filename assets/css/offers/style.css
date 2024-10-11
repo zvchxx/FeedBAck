@@ -184,6 +184,11 @@ path {
     border-radius: 5px; /* Burchaklarni yumshatish */
 }
 
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .btn-group .btn.active,
 .btn-group a.active {
     background-color: #007bff; /* Tanlangan tugma rangi */
