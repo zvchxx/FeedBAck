@@ -1,4 +1,3 @@
-{% load i18n %}
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -34,7 +33,7 @@
         <div class="main-logo">
             <a href="/" style="color: #000000">
                 <img src="{% static 'files/images/logo.png' %}" alt="404" class="logo-style">
-               {% trans "Najot Ta'lim Feedback" %}
+               Najot Ta'lim Feedback
             </a>
         </div>
         <div class="form-items">
@@ -48,16 +47,16 @@
                     <form class="custom-form" action="{% url 'users:login' %}" method="post" role="form">
                         {% csrf_token %}
                         <div class="text-center mb-5">
-                            <p class="mb-1" style="text-align: end">{% trans 'Welcome to' %}<h6 style="text-align: end">
-                            <b>{% trans 'Najot Talim Feedback' %}</b></h6></p>
+                            <p class="mb-1" style="text-align: end">Welcome to<h6 style="text-align: end">
+                            <b>Najot Talim Feedback</b></h6></p>
                         </div>
                         <div>
-                            <p style="text-align: start"><b>{% trans 'Login' %}</b></p>
+                            <p style="text-align: start"><b>Login</b></p>
                             <div class="input-group mb-3">
                                 <input type="text" name="username" id="username"
                                        class="form-control login-form-input"
                                        aria-label="username" aria-describedby="basic-addon1"
-                                       placeholder="{% trans 'Username' %}" required>
+                                       placeholder="Username" required>
 
                                 <span class="input-group-text" id="basic-addon1">
                                             <i class="custom-form-icon bi-person"></i>
@@ -67,7 +66,7 @@
                                 <input type="password" name="password" id="password"
                                        class="form-control login-form-input"
                                        aria-label="user_password" aria-describedby="basic-addon1"
-                                       placeholder="{% trans 'Password' %}" required>
+                                       placeholder="Password" required>
 
                                 <span class="input-group-text" id="basic-addon">
                                             <i class="custom-form-icon bi-person"></i>
@@ -75,11 +74,11 @@
                             </div>
                             <div class="col-lg-8 col-md-10 col-8 mx-auto mb-2">
                                 <button type="submit" class="form-control"
-                                        style="text-align: center">{% trans 'Login' %}</button>
+                                        style="text-align: center">Login</button>
                             </div>
                             <div style="padding-top: 10px; text-align: center;">
-                                <p style="font-size: 13px">{% trans 'Does your account not exist?' %} <a
-                                        href="{% url 'users:register' %}">{% trans 'Create account' %}</a>
+                                <p style="font-size: 13px">Does your account not exist?<a
+                                        href="{% url 'users:register' %}">Create account</a>
                                 </p>
                             </div>
                         </div>

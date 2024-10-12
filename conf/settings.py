@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'users',
     'team',
     'feedback',
-    'comment',
 ]
 
 from pathlib import Path

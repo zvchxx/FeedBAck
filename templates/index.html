@@ -1,5 +1,4 @@
 {% load static %}
-{% load i18n %}
 <!doctype html>
 <html lang="uz">
 
@@ -39,14 +38,14 @@
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
-                    <span>{% trans 'Najot Talim' %}</span>
+                    <span>Najot Talim</span>
                 </a>
 
                 <div class="d-lg-none ms-auto me-3">
                     <a href="main/auth/login/login.html"
                         class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                         <i class="btn-icon bi-person"></i>
-                        <span>{% trans 'Log in' %}</span>
+                        <span>Log in</span>
                     </a>
                 </div>
 
@@ -64,17 +63,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link navbar-nav-scroll" href="/feedback/offer/">{% trans 'Write Offer' %}</a>
+                        <a class="nav-link navbar-nav-scroll" href="/feedback/offer/">Write Problem</a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'feedback:show' %}">{% trans 'Show Offers' %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/comment/comment/">{% trans 'Comments' %}</a>
+                        <a class="nav-link" href="{% url 'feedback:show-offer' %}">Show Problems</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="/404/">{% trans '404' %}</a>
+                        <a class="nav-link " href="/404/">404</a>
                     </li>
 
                     <li class="nav-item">
@@ -99,13 +96,13 @@
                         <a href="{% url 'users:logout' %}"
                            class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                             <i class="btn-icon bi-person"></i>
-                            <span>{% trans 'Log out' %}</span>
+                            <span>Log out</span>
                         </a>
                     {% else %}
-                        <a href="/"
+                        <a href="{% url 'users:login' %}"
                        class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                         <i class="btn-icon bi-person"></i>
-                            <span>{% trans 'Log in' %}</span>
+                            <span>Log in</span>
                     </a>
                     {% endif %}
                 </div>
@@ -118,13 +115,23 @@
                 <div class="row">
                     <div class="col-lg-6 col-12 mb-2 pb-2 pb-lg-0 mb-lg-0">
 
-                        <h6>{% trans 'Exchange of ideas' %}</h6>
+                        <h6>Exchange of ideas</h6>
 
-                        <h1 class="text-white mb-4">{% trans 'Online platform for requests and offers' %}</h1>
+                        <h1 class="text-white mb-4">Online platform for requests and offers</h1>
 
-                        <a href="/feedback/offer/" class="btn custom-btn smoothscroll me-3">{% trans 'Problems' %}</a>
+                        <a href="/feedback/show-offer/" class="btn custom-btn smoothscroll me-3">Show Offers</a>
 
-                        <a href="/users/login/" class="link link--kale smoothscroll">{% trans 'Make an offer' %}</a>
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'feedback:offer' %}"
+                        class="link link--kale smoothscroll">
+                           Make an offer
+                        </a>
+                    {% else %}
+                        <a href="{% url 'users:login' %}"
+                        class="link link--kale smoothscroll">
+                        Make an offer
+                    </a>
+                    {% endif %}
                     </div>
                     <div class="hero-image-wrap col-lg-6 col-12 mt-3 mt-lg-0">
                         <dotlottie-player src="https://lottie.host/ef67cee9-3f8a-4da2-945f-ab8a83e541b0/QZXEjRpNmf.json"
@@ -151,13 +158,12 @@
 
                     <div class="col-lg-6 col-12">
                         <div class="book-section-info">
-                            <h6>{% trans 'Brief information about the site' %}</h6>
+                            <h6>Brief information about the site</h6>
 
 
-                            <h2 class="mb-4">{% trans "Najot Ta'lim Feedback" %}</h2>
+                            <h2 class="mb-4">Najot Ta'lim Feedback</h2>
 
                             <p>
-                                {% blocktrans %}
                                 The Najot Ta'lim Feedback Site is designed to collect and analyze feedback on services,
                                 classes, and overall experiences at the Najot Ta'lim educational center. The site allows
                                 students and their parents to identify strengths and areas for improvement at the
@@ -166,7 +172,6 @@
                                 collected feedback is used to improve services and introduce new opportunities. The site
                                 also showcases the center’s achievements and successes, providing inspiration and
                                 strengthening its image.
-                                {% endblocktrans %}
                             </p>
                         </div>
                     </div>
@@ -181,24 +186,24 @@
                 <div class="row">
 
                     <div class="col-lg-12 col-12 text-center">
-                        <h6>{% trans 'Questions - Answers' %}</h6>
+                        <h6>Questions - Answers</h6>
 
-                        <h2 class="mb-5">{% trans 'Frequently asked questions' %}</h2>
+                        <h2 class="mb-5">Frequently asked questions</h2>
                     </div>
 
                     <div class="col-lg-4 col-12">
                         <nav id="navbar-example3" class="h-100 flex-column align-items-stretch">
                             <nav class="nav nav-pills flex-column">
-                                <a class="nav-link smoothscroll" href="#item-1"><strong>{% trans 'Question 1: ' %}</strong>{% trans 'How can I submit feedback?' %}</a>
+                                <a class="nav-link smoothscroll" href="#item-1"><strong>Question 1: </strong> can I submit feedback?</a>
 
-                                <a class="nav-link smoothscroll" href="#item-2"><strong>{% trans 'Question 2:' %} </strong>
-                                    {% trans 'How is feedback processed and what results are published?' %}</a>
+                                <a class="nav-link smoothscroll" href="#item-2"><strong>Question 2: </strong>
+                                    How is feedback processed and what results are published?</a>
 
-                                <a class="nav-link smoothscroll" href="#item-3"><strong>{% trans 'Question 3: ' %}</strong>{% trans 'Is my feedback anonymous?' %}</a>
+                                <a class="nav-link smoothscroll" href="#item-3"><strong>Question 3: </strong>Is my feedback anonymous?</a>
 
-                                <a class="nav-link smoothscroll" href="#item-4"><strong>{% trans 'Question 4: ' %}</strong>{% trans 'Can I participate in discussions on the site?' %}</a>
+                                <a class="nav-link smoothscroll" href="#item-4"><strong>Question 4: </strong>Can I participate in discussions on the site?'</a>
 
-                                <a class="nav-link smoothscroll" href="#item-5"><strong>{% trans 'Question 5: ' %}</strong>{% trans 'What topics can be discussed in the forums?' %}</a>
+                                <a class="nav-link smoothscroll" href="#item-5"><strong>Question 5: </strong>What topics can be discussed in the forums?</a>
                             </nav>
                         </nav>
                     </div>
@@ -207,67 +212,57 @@
                         <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
                             class="scrollspy-example-2" tabindex="0">
                             <div class="scrollspy-example-item" id="item-1">
-                                <h5>{% trans '1. Question: How can I submit feedback?' %}</h5>
+                                <h5>1. Question: How can I submit feedback?</h5>
 
                                 <p>
-                                    {% blocktrans %}
                                     You can submit feedback using the online form available on our site. Simply fill out
                                     the
                                     required sections and submit your comments. Anonymity is an option if you prefer.
-                                    {% endblocktrans %}
                                 </p>
 
                             </div>
 
                             <div class="scrollspy-example-item" id="item-2">
-                                <h5>{% trans '2. Question: How is feedback processed and what results are published?' %}</h5>
+                                <h5>2. Question: How is feedback processed and what results are published?</h5>
 
                                 <p> 
-                                    {% blocktrans %}
                                     Feedback is regularly analyzed. Monthly or quarterly reports summarizing general
                                     trends
                                     and improvements are published on our site. Individual feedback responses are not
                                     provided, but general responses and discussion outcomes are shared.
-                                    {% endblocktrans %}
                                 </p>
 
                             </div>
 
                             <div class="scrollspy-example-item" id="item-3">
-                                <h5>{% trans '3. Question: Is my feedback anonymous?' %}</h5>
+                                <h5>3. Question: Is my feedback anonymous?</h5>
 
                                 <p>
-                                    {% blocktrans %}
                                     Yes, you can submit feedback anonymously. Your personal information will not be
                                     disclosed, but your feedback will be used for general analysis.
-                                    {% endblocktrans %}
                                 </p>
                             </div>
 
                             <div class="scrollspy-example-item" id="item-4">
-                                <h5>{% trans '4. Question: Can I participate in discussions on the site?' %}</h5>
+                                <h5>4. Question: Can I participate in discussions on the site?</h5>
 
                                 <p>
-                                    {% blocktrans %}
                                     Yes, the site includes a discussion forum where you can engage with other users. You
                                     can
                                     exchange opinions, discuss feedback, and participate in conversations on various
                                     topics.
-                                    {% endblocktrans %}
                                 </p>
                             </div>
 
                             <div class="scrollspy-example-item" id="item-5">
-                                <h5>{% trans '5. Question: What topics can be discussed in the forums?' %}</h5>
+                                <h5>5. Question: What topics can be discussed in the forums?</h5>
 
                                 <p>
-                                    {% blocktrans %}
                                     The forums cover topics such as services, educational processes, teachers, classes,
                                     and
                                     other aspects of the educational center’s activities. You can share your opinions
                                     and
                                     engage in discussions with other users on these topics.
-                                    {% endblocktrans %}
                                 </p>
                             </div>
                         </div>
@@ -281,7 +276,7 @@
             <div class="col-lg-12 col-12 text-center">
                 <h6>Team</h6>
 
-                <h2 class="mb-5">{% trans 'About the participants in the team' %}</h2>
+                <h2 class="mb-5">About the participants in the team</h2>
             </div>
             <div class="slider">
                
@@ -325,9 +320,9 @@
                 <div class="row">
 
                     <div class="col-lg-12 col-12 text-center mb-5">
-                        <h6>{% trans 'Appeals' %}</h6>
+                        <h6>Appeals</h6>
 
-                        <h2>{% trans 'Best offers' %}</h2>
+                        <h2>'Best offers</h2>
                     </div>
                     
                     <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -377,23 +372,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <span>{% trans "Copyright © 2024, All Right Reserved Najot Ta'lim Feedback" %}</span>
+                        <span>Copyright © 2024, All Right Reserved Najot Ta'lim Feedback</span>
                     </div>
                     <!-- End Col -->
                     <div class="col-md-6">
                         <div class="copyright-menu">
                             <ul>
                                 <li>
-                                    <a href="#">{% trans 'Home' %}</a>
+                                    <a href="#">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">{% trans 'Terms' %}</a>
+                                    <a href="#">Teams</a>
                                 </li>
                                 <li>
-                                    <a href="#">{% trans 'Privacy Policy' %}</a>
+                                    <a href="#">Privacy Policy</a>
                                 </li>
                                 <li>
-                                    <a href="#">{% trans 'Contact' %}</a>
+                                    <a href="#">Contact</a>
                                 </li>
                             </ul>
                         </div>

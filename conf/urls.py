@@ -13,7 +13,6 @@ urlpatterns += i18n_patterns(
     path('', include('homepage.urls', namespace="home")),
     path('feedback/', include('feedback.urls', namespace="feedback")),
     path('users/', include('users.urls', namespace="users")),
-    path('comment/', include('comment.urls', namespace="comment")),
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

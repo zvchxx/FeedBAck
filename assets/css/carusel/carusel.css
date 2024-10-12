@@ -1,8 +1,8 @@
 .slider {
-    --totSlides: 4;
-    --slideWidth: 800px;
+    --totSlides: 2;
+    --slideWidth: 50%;
     --slideHeight: 100%;
-    --animationSpeed: calc(5s * var(--totSlides));
+    --animationSpeed: calc(2s * var(--totSlides));
     margin: auto;
     overflow: hidden;
     position: relative;
@@ -11,7 +11,7 @@
 .slider .slides-track {
     animation: scroll var(--animationSpeed) linear infinite;
     display: flex;
-    width: calc(var(--slideWidth) * var(--totSlides) * 2);
+    width: calc(var(--slideWidth) * var(--totSlides));
 }
 
 .slider .slide {
