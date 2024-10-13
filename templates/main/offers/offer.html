@@ -45,9 +45,17 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-lg-auto me-lg-4">
+                {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="/feedback/offer/">Write an offer</a>
+                    <a class="nav-link navbar-nav-scroll" href="/feedback/offer/">Write an offer</a>
                 </li>
+                </a>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link navbar-nav-scroll" href="{% url 'users:login' %}">Write an offer</a>
+                </li>
+            </a>
+            {% endif %}
 
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="/">Landing page</a>
@@ -120,6 +128,7 @@
                 </form>
             </div>            
         </div>
+    <div class="simple_div" >
         <div id="card-container" class="row">
             {% for offer in offers %}
             <h2 style="margin: 15px 5px">Offers</h2>
@@ -162,6 +171,7 @@
             </div>
             {% endfor %}
         </div>
+    </div>
         <div id="card-container" class="row">
             {% for problem in problems %}
             <h2 style="margin: 15px 5px">Problem</h2>
@@ -205,6 +215,9 @@
             </div>
             {% endfor %}
         </div>
+      
+    </div>
+    
         <!-- <div id="pagination" class="text-center mb-4" style="margin-top: 50px;">
             <button id="prev" class="btn" disabled>Previous</button>
             <button id="next" class="btn">Next</button>

@@ -62,13 +62,20 @@
                     <li class="nav-item">
                         <a class="nav-link navbar-nav-scroll" href="/">Home</a>
                     </li>
-
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link navbar-nav-scroll" href="/feedback/offer/">Write Problem</a>
+                        <a class="nav-link navbar-nav-scroll" href="/feedback/problem/">Write Problem</a>
                     </li>
+                    </a>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link navbar-nav-scroll" href="{% url 'users:login' %}">Write Problem</a>
+                    </li>
+                </a>
+                {% endif %}
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'feedback:show-offer' %}">Show Problems</a>
+                        <a class="nav-link" href="{% url 'feedback:show-problem' %}">Show Problems</a>
                     </li>
 
                     <li class="nav-item">
