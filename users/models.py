@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 class ProfileUserModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) 
-    first_name = models.CharField(max_length=64)
     location = models.CharField(max_length=64)
     email = models.EmailField(unique=True)
     link = models.URLField(max_length=200, blank=True, null=True)
