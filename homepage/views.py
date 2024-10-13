@@ -4,6 +4,8 @@ from team.models import TeamModel
 
 from feedback.models import OfferModel
 
+from users.models import ProfileUserModel
+
 
 def home_page_view(request):
     teams = TeamModel.objects.all()
@@ -17,4 +19,6 @@ def five_page_view(request):
     return render(request, 'main/404/404.html')
 
 def profil_page_view(request):
-    return render(request, 'main/profile/profile.html')
+    users = ProfileUserModel.objects.all()
+    context = {'users': users}
+    return render(request, 'main/profile/profile.html', context)
